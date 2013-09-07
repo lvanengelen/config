@@ -20,7 +20,9 @@ while :; do
 	MUSEDPT=$(( ($MUSED * 100) / $MTOT ))
 	MEM_STR="Mem:${MUSEDPT}%"
 
-	echo -e "$TEMP_STR  $MEM_STR  $WLAN_STR"
+        MIXER_STR="Vol:$(amixer get Master | sed -n '$s/^.*\[\(.*\)%].*$/\1/p')%"
+
+	echo -e "$TEMP_STR  $MEM_STR  $WLAN_STR  $MIXER_STR"
 
 	sleep $SLEEP_SEC
 done
