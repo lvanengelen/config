@@ -1,0 +1,26 @@
+XTerm*termName:xterm-256color
+XTerm*loginShell:true
+XTerm*foreground:gray
+XTerm*background:black
+XTerm*bellIsUrgent:true
+XTerm*faceName:inconsolata:pixelsize=15
+XTerm*dynamicColors:true
+XTerm*eightBitInput:false
+XTerm*metaSendsEscape:true
+XTerm*saveLines:1024
+XTerm*scrollKey:true
+XTerm*scrollTtyOutput:false
+XTerm*deleteIsDEL:true
+XTerm*locale:UTF-8
+
+*VT100.Translations: #override \
+Meta Ctrl Shift <Key>v:insert-selection(PRIMARY)\n\
+Ctrl Shift <Key>v:insert-selection(CLIPBOARD)\n\
+Shift <Btn1Up>:select-end(CLIPBOARD)\n\
+~Meta Ctrl Shift <Key>c:copy-selection(CLIPBOARD)
+
+Xpdf*enableFreetype:yes
+Xpdf*antialias:yes
+Xpdf*foreground:black
+Xpdf*background:white
+Xpdf*urlCommand:xdg-open %s

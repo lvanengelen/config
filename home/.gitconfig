@@ -1,0 +1,9 @@
+[user]
+	name = Leroy van Engelen
+	email = leroy.vanengelen@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	st = status
+[push]
+	default = simple

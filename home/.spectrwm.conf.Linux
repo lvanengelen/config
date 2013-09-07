@@ -1,0 +1,24 @@
+bar_action = baraction-linux.sh
+
+autorun = ws[1]:xterm
+autorun = ws[2]:xombrero
+
+modkey = Mod4
+
+program[suspend] = systemctl suspend
+bind[suspend] = MOD+Escape
+program[hibernate] = systemctl hibernate
+bind[hibernate] = MOD+Shift+Escape
+bind[lock] = MOD+Shift+Delete
+program[spotify_playpause] = spotifyctl PlayPause
+bind[spotify_playpause] = XF86AudioPlay
+program[spotify_next] = spotifyctl Next
+bind[spotify_next] = XF86Forward
+program[spotify_previous] = spotifyctl Previous
+bind[spotify_previous] = XF86Back
+program[spotify_stop] = spotifyctl Stop
+bind[spotify_previous] = Shift+XF86AudioPlay
+program[volume_lower] = amixer set Master 2-
+bind[volume_lower] = XF86AudioLowerVolume
+program[volume_raise] = amixer set Master 2+
+bind[volume_raise] = XF86AudioRaiseVolume
