@@ -7,5 +7,7 @@ home
 ====
 
     $ cp -r home/*
-    $ # Rename OS dependent stuff
-      find . -name '*.'`uname` | while read f; do echo ${f%.*}; done
+    $ # rename os dependent stuff
+    $ find . -name '*.'`uname` | while read f; do echo ${f%.*}; done
+    $ # install vim packages
+    $ vim -c BundleInstall
