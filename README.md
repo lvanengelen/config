@@ -8,6 +8,6 @@ home
 
     $ cp -r home/*
     $ # rename os dependent stuff
-    $ find . -name '*.'`uname` | while read f; do echo ${f%.*}; done
+    $ find . -name '*.'`uname` | while read f; do mv $f ${f%.*}; done
     $ # install vim packages
     $ vim -c BundleInstall
