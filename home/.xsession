@@ -6,7 +6,7 @@ if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval `dbus-launch --auto-syntax --exit-with-session`
 fi
 
-if [ -z "$SSH_AGENT_PID" ]; then
+if [ -z "$SSH_AUTH_SOCK" ]; then
     eval `ssh-agent`
 fi
 
