@@ -6,4 +6,8 @@ export PS1="\u@\h:\W\$ "
 export CVS_RSH=ssh
 export HISTFILE=$HOME/.sh_history
 
+if [ -z $SSH_AUTH_SOCK ]; then
+    eval `ssh-agent` > /dev/null
+fi
+
 alias ls='ls -F'
