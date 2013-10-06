@@ -1,0 +1,14 @@
+#!/bin/sh
+
+SESSION=servertje
+
+if tmux has-session -t $SESSION; then
+    tmux attach-session -t $SESSION
+    exit 0
+fi
+
+tmux new-session -d -s $SESSION -n Chat irssi
+tmux new-window -t $SESSION 
+tmux select-window -t $SESSION:0
+
+tmux attach-session -t $SESSION
