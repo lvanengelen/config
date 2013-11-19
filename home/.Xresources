@@ -24,3 +24,8 @@ Xpdf*antialias:yes
 Xpdf*foreground:black
 Xpdf*background:white
 Xpdf*urlCommand:xdg-open %s
+
+XLock.usefirst:false
+XLock.nice:15
+XLock.startCmd:ssh-add -D
+XLock.mode:blank
