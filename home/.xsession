@@ -19,6 +19,8 @@ setxkbmap -layout "us,ru" \
           -option eurosign:5 \
           -option compose:menu
 
-xsetwacom --set "Wacom BambooPT 2FG 4x5 Finger touch" Touch off
+if [ -x $(which xsetwacom) ]; then
+    xsetwacom --set "Wacom BambooPT 2FG 4x5 Finger touch" Touch off
+fi
 
 exec spectrwm
