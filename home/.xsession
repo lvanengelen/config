@@ -1,3 +1,5 @@
+export PATH="$PATH:$HOME/.local/bin"
+
 if [ -r $HOME/.Xresources ]; then
     xrdb $HOME/.Xresources
 fi
@@ -16,5 +18,7 @@ setxkbmap -layout "us,ru" \
           -option lv3:ralt_switch_grp \
           -option eurosign:5 \
           -option compose:menu
+
+xsetwacom --set "Wacom BambooPT 2FG 4x5 Finger touch" Touch off
 
 exec spectrwm

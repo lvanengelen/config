@@ -7,10 +7,14 @@ while :; do
         awk '/temp.*_input/ { printf "%d ", $2 }' | \
         awk '{ printf "Temps:%d,%d,%d,%d,%ddegC", $1, $2, $3, $4, $5 }')
 
-    eval $(cat /proc/net/wireless | sed s/[.]//g | awk '/^[[:alnum:]]+:/ {printf "WLAN_QULTY=%s; WLAN_SIGNL=%s; WLAN_NOISE=%s", $3,$4,$5};' -)
-    BCSCRIPT="scale=0;a=100*$WLAN_QULTY/70;print a"
-    WLAN_QPCT=`echo $BCSCRIPT | bc -l`
-    WLAN_STR="Q=$WLAN_QPCT% S/N="$WLAN_SIGNL"/"$WLAN_NOISE"dBm"
+    eval $(cat /proc/net/wireless | \
+        sed s/[.]//g | \
+        awk '/^[[:alnum:]]+:/ {printf "WLAN_QULTY=%s; WLAN_SIGNL=%s; WLAN_NOISE=%s", $3,$4,$5};' -)
+    if [ -n "$WLAN_QULTY" ]; then
+        BCSCRIPT="scale=0;a=100*$WLAN_QULTY/70;print a"
+        WLAN_QPCT=`echo $BCSCRIPT | bc -l`
+        WLAN_STR="Q=$WLAN_QPCT% S/N="$WLAN_SIGNL"/"$WLAN_NOISE"dBm"
+    fi
 
     CPUFREQ_STR=`echo "Freq:"$(cat /proc/cpuinfo | grep 'cpu MHz' | sed 's/.*: //g; s/\..*//g;')`
     CPULOAD_STR="Load:$(uptime | sed 's/.*://; s/,//g')"

@@ -33,9 +33,9 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': [] }
 
-nn <F2> :setlocal spell!<cr>
-nn <F5> :make <bar> cwin<cr>
-nn <F6> :cclose<cr>
+nn <f2> :setlocal spell!<cr>
+nn <f3> :NERDTreeToggle<cr>
+nn <f6> :cclose<cr>
 
 filetype plugin indent on
 syntax on

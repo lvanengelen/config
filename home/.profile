@@ -1,10 +1,18 @@
-export PATH=$HOME/.local/bin:$PATH
-export PAGER=less
-export VISUAL=vim EDITOR=vim
-export PYTHONPATH=$HOME/.local/lib/python2
-export PS1="\u@\h:\W\$ "
 export CVS_RSH=ssh
-export HISTFILE=$HOME/.sh_history
+export LANG=en_US.utf-8
+export PAGER=less
+export PATH=$HOME/.local/bin:$PATH
+export PS1="\u@\h:\W\$ "
+export PYTHONPATH=$HOME/.local/lib/python2
+export VISUAL=vim EDITOR=vim
+
+if [ -d /usr/bin/vendor_perl ]; then
+    PATH=/usr/bin/vendor_perl:$PATH
+fi
+
+if [ -z "$BASH" ]; then
+    export HISTFILE=$HOME/.sh_history
+fi
 
 if [ -z $SSH_AUTH_SOCK ]; then
     eval `ssh-agent` > /dev/null

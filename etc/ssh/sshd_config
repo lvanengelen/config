@@ -1,0 +1,8 @@
+AuthorizedKeysFile .ssh/authorized_keys
+ChallengeResponseAuthentication no
+PasswordAuthentication no
+PermitRootLogin no
+UsePAM no
+UsePrivilegeSeparation sandbox
+
+Subsystem sftp /usr/lib/ssh/sftp-server
