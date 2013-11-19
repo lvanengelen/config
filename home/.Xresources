@@ -3,7 +3,7 @@ XTerm*loginShell:true
 XTerm*foreground:gray
 XTerm*background:black
 XTerm*bellIsUrgent:true
-XTerm*faceName:inconsolata:pixelsize=15
+XTerm*faceName:"Deja Vu Sans Mono":pixelsize=13:antialias=true
 XTerm*dynamicColors:true
 XTerm*eightBitInput:false
 XTerm*metaSendsEscape:true
