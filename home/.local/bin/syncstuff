@@ -1,0 +1,44 @@
+#!/bin/sh
+
+remote=ll.it.cx
+syncdir=Sync
+
+usage() {
+    cat <<EOF
+usage: $(basename $0) <push|pull|sync>
+EOF
+}
+
+push() {
+    rsync -aru "$HOME/$syncdir" "$remote:"
+}
+
+pull() {
+    rsync -aru "$remote:$syncdir" "$HOME/"
+}
+
+if [ $# -gt 1 ]; then
+    (
+        echo "Too many arguments: $*"
+        usage
+    ) >&2
+    exit 1
+fi
+
+cmd=${1:-sync}
+
+case "$cmd" in
+    push) push ;;
+    pull) pull ;;
+    sync)
+        pull
+        push
+        ;;
+    *)
+        (
+            echo "Unknown command: $*"
+            usage
+        ) >&2
+        exit 1
+        ;;
+esac
