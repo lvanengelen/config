@@ -10,11 +10,11 @@ EOF
 }
 
 push() {
-    rsync -aru "$HOME/$syncdir" "$remote:"
+    rsync -aru --delete "$HOME/$syncdir" "$remote:"
 }
 
 pull() {
-    rsync -aru "$remote:$syncdir" "$HOME/"
+    rsync -aru --delete "$remote:$syncdir" "$HOME/"
 }
 
 if [ $# -gt 1 ]; then
