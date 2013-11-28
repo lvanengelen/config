@@ -1,4 +1,5 @@
 export PATH="$PATH:$HOME/.local/bin"
+export EDITOR=vim VISUAL=vim
 
 if [ -r $HOME/.Xresources ]; then
     xrdb $HOME/.Xresources

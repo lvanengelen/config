@@ -4,7 +4,10 @@ export PAGER=less
 export PATH=$HOME/.local/bin:$PATH
 export PS1="\u@\h:\W\$ "
 export PYTHONPATH=$HOME/.local/lib/python2
-export VISUAL=vim EDITOR=vim
+
+VISUAL=${VISUAL:-vim}
+EDITOR=${EDITOR:-vim}
+export EDITOR VISUAL
 
 if [ -d /usr/bin/vendor_perl ]; then
     PATH=/usr/bin/vendor_perl:$PATH
