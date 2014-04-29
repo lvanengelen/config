@@ -1,18 +1,20 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'ack.vim'
-Bundle 'bufexplorer.zip'
-Bundle 'xterm16.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'millermedeiros/vim-statline'
+Plugin 'ack.vim'
+Plugin 'bufexplorer.zip'
+Plugin 'xterm16.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+Plugin 'millermedeiros/vim-statline'
+
+call vundle#end()
 
 set autoindent
 set backspace=indent,eol,start
