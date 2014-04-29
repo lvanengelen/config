@@ -1,0 +1,29 @@
+#!/bin/sh
+
+if [ `id -u` != 0 ]; then
+    echo "You have to be root to setup a network." 1>&2
+    exit 1
+fi
+
+if [ $# -gt 1 ]; then
+    echo "Wrong number of arguments." 1>&2
+    exit 1
+fi
+
+mtime() {
+    stat -f %m $1
+}
+
+editor=${VISUAL:-vi}
+if=${1:-athn0}
+hnfile=/etc/hostname.$if
+old_mtime=$(mtime $hnfile)
+
+$editor $hnfile
+
+if [ $(mtime $hnfile) = $old_mtime ]; then
+    echo "$hnfile not changed; not configuring interface."
+    exit 0
+fi
+
+sh /etc/netstart $if
