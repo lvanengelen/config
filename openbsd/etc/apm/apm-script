@@ -1,0 +1,13 @@
+#!/bin/sh
+
+suspend() {
+    pkill -SIGUSR1 xidle
+    umount -f /crypto
+    bioctl -d sd1
+}
+
+case $0 in
+    *suspend)
+        suspend
+        ;;
+esac

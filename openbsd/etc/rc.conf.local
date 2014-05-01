@@ -1,0 +1,4 @@
+ntpd_flags=		# enabled during install
+xdm_flags=		# enabled during install
+apmd_flags=
+lpd_flags=
