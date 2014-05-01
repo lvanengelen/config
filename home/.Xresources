@@ -13,6 +13,10 @@ XTerm*scrollTtyOutput:false
 XTerm*deleteIsDEL:true
 XTerm*locale:UTF-8
 
+! C-M-S-v pastes PRIMARY (current X selection)
+! C-S-v pastes CLIPBOARD ('normal' cut/paste buffer)
+! M1 select copies to PRIMARY
+! S-M1 select copies to CLIPBOARD
 *VT100.Translations: #override \
 Meta Ctrl Shift <Key>v:insert-selection(PRIMARY)\n\
 Ctrl Shift <Key>v:insert-selection(CLIPBOARD)\n\

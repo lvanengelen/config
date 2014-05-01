@@ -1,0 +1,13 @@
+#!/bin/sh
+
+remote=ll.it.cx
+file=Sync/keepass.kdb
+
+case `basename $0` in
+    keepass-push)
+        rsync -u "$HOME/$file" "$remote:$file"
+        ;;
+    *)
+        rsync -u "$remote:$file" "$HOME/$file"
+        ;;
+esac
