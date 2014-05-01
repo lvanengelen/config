@@ -1,0 +1,11 @@
+#!/bin/sh
+
+RSYNC_FLAGS="-rv -b --suffix=.bak"
+
+os=$(uname -s | tr [:upper:] [:lower:])
+
+sudo rsync $RSYNC_FLAGS generic/etc/ /etc/
+[ -d $os/etc ] && sudo rsync $RSYNC_FLAGS $os/etc/ /etc/
+
+rsync $RSYNC_FLAGS generic/home/ $HOME
+[ -d $os/home ] && rsync $RSYNC_FLAGS $os/home/ $HOME
