@@ -42,7 +42,7 @@ update_apm() {
 }
 
 update_ifs() {
-    NETIFS=`systat ifstat | grep up:U`
+    NETIFS=`systat ifstat | grep up:U | cut -d" " -f1`
 }
 
 update_wifi_signal() {
@@ -54,16 +54,19 @@ update_volume() {
     VOLUME=`mixerctl -n outputs.master`
 }
 
-print_mem() {
-    echo -n "$MEM"
+format_mem() {
+    MEM_STR="M: $MEM"
 }
 
-print_cpu() {
-    echo -n "$CPU_USR $CPU_NCE $CPU_SYS $CPU_INT $CPU_IDL $CPU_SPEED"
+format_cpu() {
+    CPU_STR="U: $CPU_USR% N: $CPU_NCE% S: $CPU_SYS% I: $CPU_INT% i: $CPU_IDL% ${CPU_SPEED} MHz"
 }
 
-print_bat() {
+format_bat() {
     case $AC_STATUS in
+        0)
+            AC_STRING="bat "
+            ;;
         1)
             AC_STRING="AC "
             ;;
@@ -76,23 +79,29 @@ print_bat() {
     esac
 
     if [ $BAT_STATUS -lt 4 ]; then
-        echo -n "$AC_STRING$BAT_LEVEL%"
+        BAT_STR="$AC_STRING$BAT_LEVEL%"
+    else
+        BAT_STR=""
     fi
 }
 
-print_ifs() {
+_format_ifs() {
     echo $NETIFS | while read nif; do
         update_wifi_signal
-        echo -n "$WIFI_SIGNAL$x"
+        echo -n "$nif: $WIFI_SIGNAL$x"
         x=" "
     done
 }
 
-print_vol() {
+format_ifs() {
+    IFS_STR=$(_format_ifs)
+}
+
+format_vol() {
     if [ $MUTE = "on" ]; then
-        echo -n "mute"
+        VOL_STR="mute"
     else
-        echo -n "$VOLUME"
+        VOL_STR="V: $VOLUME"
     fi
 }
 
@@ -110,22 +119,17 @@ while :; do
             update_ifs
         fi
 
-        if [ $I -gt 2 ]; then
-            update_mem
-            update_cpu $REPLY
-            update_volume
+        update_mem
+        update_cpu $REPLY
+        update_volume
 
-            print_mem
-            echo -n " "
-            print_cpu
-            echo -n " "
-            print_bat
-            echo -n " "
-            print_ifs
-            echo -n " "
-            print_vol
-            echo ""
-        fi
+        format_mem
+        format_cpu
+        format_bat
+        format_ifs
+        format_vol
+
+        echo "$MEM_STR $CPU_STR $BAT_STR $IFS_STR $VOL_STR"
 
         I=$(( ${I} + 1 ));
     done
