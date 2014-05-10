@@ -22,4 +22,6 @@ setxkbmap -layout "us,ru" \
 
 synclient TapButton1=1 PalmDetect=1
 
+xidle &
+
 exec spectrwm
