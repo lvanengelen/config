@@ -20,6 +20,6 @@ setxkbmap -layout "us,ru" \
           -option eurosign:5 \
           -option compose:menu
 
-synclient TapButton=1 PalmDetect=1
+synclient TapButton1=1 PalmDetect=1
 
 exec spectrwm
